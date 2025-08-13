@@ -7,7 +7,6 @@ from src.QABOT.pipeline.model_training_pipeline import ModelTrainingPipeline
 from src.QABOT.pipeline.model_evaluation_pipeline import ModelEvaluationPipeline
 
 
-# HF API :
 STAGE_NAME="Data Ingestion stage"
 
 

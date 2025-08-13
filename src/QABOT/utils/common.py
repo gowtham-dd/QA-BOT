@@ -128,3 +128,14 @@ def get_size(path: Path) -> str:
 
 
 
+@ensure_annotations
+def load_config(path_to_yaml: Path) -> ConfigBox:
+    """Load and return configuration from yaml file
+    
+    Args:
+        path_to_yaml (Path): path to yaml configuration file
+        
+    Returns:
+        ConfigBox: ConfigBox type
+    """
+    return read_yaml(path_to_yaml)

@@ -8,3 +8,39 @@ data_ingestion:
   source_URL: https://github.com/gowtham-dd/Datasets/raw/main/QABOT.zip
   local_data_file: artifacts/data_ingestion/QABOT.zip
   unzip_dir: artifacts/data_ingestion
+
+data_validation:
+  root_dir: artifacts/data_validation
+  STATUS_FILE: artifacts/data_validation/status.json  # Changed to JSON for structured output
+  TRAIN_FILE: artifacts/data_ingestion/train-v1.1.json  # After ingestion
+  DEV_FILE: artifacts/data_ingestion/dev-v1.1.json  # Specific file paths
+  REQUIRED_KEYS:  # Keys required in SQuAD format
+    - "id"
+    - "question"
+    - "answers"
+    - "context"
+  MIN_EXAMPLES: 1000  # Minimum expected questions
+
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  TRAIN_FILE: artifacts/data_ingestion/train-v1.1.json
+  DEV_FILE: artifacts/data_ingestion/dev-v1.1.json
+  PARA_VECTORIZER_FILE: artifacts/data_transformation/para_vectorizer.pkl
+  SENT_VECTORIZER_FILE: artifacts/data_transformation/sent_vectorizer.pkl
+  PARAGRAPHS_FILE: artifacts/data_transformation/paragraphs.json
+  SENTENCES_FILE: artifacts/data_transformation/sentences.json
+
+
+model_trainer:
+  root_dir: artifacts/model_trainer
+  model_save_dir: artifacts/model_trainer/DISTILBERT
+  trained_model_path: artifacts/model_trainer/DISTILBERT/model.safetensors
+  tokenizer_save_dir: artifacts/model_trainer/DISTILBERT
+
+
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  metrics_file: artifacts/model_evaluation/metrics.json
+  test_data_path: artifacts/data_ingestion/dev-v1.1.json

@@ -1,1 +1,15 @@
-key : value
+
+Transformation:
+  MAX_LEN: 384
+  DOC_STRIDE: 128
+
+
+Training:
+  num_train_epochs: 3
+  batch_size: 8
+  learning_rate: 3e-5
+
+
+
+Evaluation:
+  metrics: ["exact_match"] 
